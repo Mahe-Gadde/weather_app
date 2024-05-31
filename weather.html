@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+    <link rel="stylesheet" href="weather.css"
+</head>
+<body>
+    <center>
+        <h1>Weather App</h1>
+        <form id="form">
+<input type="text" placeholder="enter your city name"id="input"/>
+<button>Submit</button>        
+        </form>
+        <div id="cities"></div>
+    </center>
+    <script>
+        const form=document.getElementById("form");
+        const input=document.getElementById("input");
+        const info=document.getElementById("cities");
+        const apiKey="afd80f48c0ba17887e9f7e161e7ac715";
+
+        form.addEventListener("submit",e=>{
+            e.preventDefault();//in order to change submit behaviour
+            const inputValue=input.value;//saves the input value
+            const url=`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${apiKey}&units=metric`;
+            fetch(url)
+            .then(response=>response.json())
+            .then(data=>{
+            const {main,name}=data;
+            const para=document.createElement("div");
+            para.innerHTML=`<p>City:${name}</p><p>Temperature:${Math.round(main.temp)}
+                <sup>0</sup>C</div>`;
+                info.appendChild(para);
+            }
+
+        )
+        .catch(()=>{
+            alert("please enter a valid city")
+        }
+    )
+        })
+    </script>
+</body>
+</html>

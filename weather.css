@@ -1,0 +1,23 @@
+form {
+    width: 300px;
+    margin-top: 30px;
+    border: 2px solid #272626;
+    padding: 20px;
+    border-radius: 5px;
+
+}
+button{
+    background-color: rgb(9, 250, 101);
+    color: white;
+}
+.input {
+    width: 100%;
+   padding: 10px;
+  
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
+}
+label{
+    font-weight: bold;
+}
